@@ -1,0 +1,407 @@
+/* ============================================================
+   CSS - Portafolio Damián Oyarce
+   Comentarios seccionales en español: cada bloque explica su
+   propósito y qué reglas agrupa.
+   ============================================================ */
+
+/* -----------------------
+   1) RESET BÁSICO
+   Reglas globales y reseteo mínimo para asegurar comportamiento
+   consistente entre navegadores y activar scroll suave.
+   ----------------------- */
+* {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+/* -----------------------
+   2) PSEUDO-ELEMENTO DERECHO
+   Pseudo-elemento fijo a la derecha usado para simetría visual
+   junto a la barra lateral. No interfiere con eventos de ratón.
+   ----------------------- */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 6rem;           /* coincide con el ancho de la barra lateral */
+    height: 100vh;
+    z-index: 1030;
+    pointer-events: none;  /* permite clics a través del pseudo-elemento */
+    background-color: #212529;
+    box-sizing: border-box;
+}
+
+/* -----------------------
+   3) BARRA LATERAL - CONTAINER
+   Tamaño fijo, espaciado y ajustes generales de la barra lateral
+   (anchura, altura y padding para ajustarla visualmente).
+   ----------------------- */
+#barra-lateral {
+    width: 6rem;
+    height: 100vh;
+    z-index: 1030;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+}
+
+/* Branding dentro de la barra lateral: reducir margen inferior */
+#barra-lateral .navbar-brand {
+    margin-bottom: 0.5rem !important;
+}
+
+/* -----------------------
+   4) BARRA LATERAL - NAVEGACIÓN Y SCROLL
+   Control del comportamiento de la lista de navegación (.nav-pills),
+   habilitando scroll vertical y definiendo estilo de la scrollbar.
+   ----------------------- */
+#barra-lateral .nav-pills {
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 0;
+}
+
+/* Scrollbar personalizada (WebKit) */
+#barra-lateral .nav-pills::-webkit-scrollbar {
+    width: 6px;
+}
+#barra-lateral .nav-pills::-webkit-scrollbar-track {
+    background: #343a40;
+}
+#barra-lateral .nav-pills::-webkit-scrollbar-thumb {
+    background: #6c757d;
+    border-radius: 3px;
+}
+#barra-lateral .nav-pills::-webkit-scrollbar-thumb:hover {
+    background: #adb5bd;
+}
+
+/* -----------------------
+   5) NAV: ENLACES E ICONOS
+   Estilos de los enlaces de navegación (padding reducido para que
+   la barra sea compacta) y comportamiento visual de los iconos.
+   ----------------------- */
+#barra-lateral .nav-link {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    border-radius: 0.375rem;
+    color: inherit;
+}
+
+.icono-nav {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+/* Escalado del icono al pasar el cursor (hover) */
+.nav-link:hover .icono-nav {
+    transform: scale(1.25);
+}
+
+/* -----------------------
+   6) LAYOUT PRINCIPAL
+   Márgenes del contenedor principal para dejar espacio a la barra
+   lateral y al pseudo-elemento derecho.
+   ----------------------- */
+#contenido-principal {
+    margin-left: 6rem;
+    margin-right: 6rem;
+    padding: 2rem;
+}
+
+/* -----------------------
+   7) FOUC FIX: OCULTAR SECCIONES POR DEFECTO
+   Evita destellos mostrando contenido no esperado hasta que el JS
+   muestre la sección activa.
+   ----------------------- */
+#contenido-principal > section {
+    display: none;
+}
+
+/* -----------------------
+   8) HOME
+   Estilos de la sección de bienvenida / hero (centrado vertical
+   y horizontal, altura relativa).
+   ----------------------- */
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+/* -----------------------
+   9) SOBRE MÍ
+   Layout de la sección "sobre_mi" con columnas izquierda/derecha y
+   estilos de presentación (foto, lema).
+   ----------------------- */
+.sobre_mi {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.izq, .der {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    padding: 2rem;
+}
+
+.izq {
+    background-color: #fff;
+}
+
+.der {
+    background-color: #212529;
+    color: #fff;
+}
+
+/* Presentación y foto */
+.presentacion {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: #212529;
+    color: #fff;
+}
+
+.presentacion img {
+    border-radius: 50px;
+    padding: 2rem;
+    transition: transform 0.5s ease;
+}
+
+.presentacion img:hover {
+    transform: scale(1.1);
+}
+
+/* Párrafos dentro de 'sobre_mi' */
+.sobre_mi p {
+    width: 100%;
+    font-size: 1.6rem;
+    background-color: #212529;
+    color: #fff;
+}
+
+/* -----------------------
+   10) PROYECTOS
+   Rejilla flexible para cartas de proyecto y estilos de cada carta.
+   ----------------------- */
+.proyectos {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.carta-proyecto {
+    flex: 1;
+    flex-wrap: wrap;
+    padding: 1.4rem;
+    margin: 0.6rem;
+    color: #fff;
+    text-align: center;
+    background-color: #212529;
+    border-radius: 5%;
+}
+
+.carta-proyecto img {
+    height: 50vh;
+    max-width: 100%;
+    margin-block: 1rem;
+}
+
+/* -----------------------
+   11) HABILIDADES
+   Distribución de tarjetas de habilidades y animaciones hover.
+   ----------------------- */
+.habilidades {
+    display: flex;
+    height: 80vh;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: row;
+}
+
+.carta-web, .carta-bd, .carta-obj {
+    display: flex;
+    flex-direction: column;
+    background-color: #212529;
+    color: #fff;
+    width: 24rem;
+    margin: 0.5rem;
+    height: 50vh;
+    padding: 1rem;
+    border-radius: 5%;
+    transition: transform 0.5s ease;
+}
+
+.carta-web:hover, .carta-bd:hover, .carta-obj:hover {
+    transform: scale(1.1);
+}
+
+/* -----------------------
+   12) BARRAS DE PROGRESO (Habilidades)
+   Barras internas que representan porcentajes; cada id controla
+   el ancho visual de la barra de habilidad.
+   ----------------------- */
+.bar {
+    background-color: #6c757d;
+    height: 5vh;
+    margin-bottom: 3vh;
+    max-width: 100%;
+}
+
+#html-fill {
+    background-color: #E44D26;
+    width: 90%;
+    height: 100%;
+    border-bottom: 1rem solid #F16529;
+}
+
+#css-fill {
+    background-color: #1572B6;
+    width: 75%;
+    height: 100%;
+    border-bottom: 1rem solid #33A9DC;
+}
+
+#js-fill {
+    background-color: #E5A42D;
+    width: 45%;
+    height: 100%;
+    border-bottom: 1rem solid #EABB2B;
+}
+
+#sql-fill {
+    background-color: #005985;
+    width: 50%;
+    height: 100%;
+    border-bottom: 1rem solid #BAC5CF;
+}
+
+#python-fill {
+    background-color: #4175A5;
+    width: 45%;
+    height: 100%;
+    border-bottom: 1rem solid #FFD448;
+}
+
+/* -----------------------
+   13) EDUCACIÓN / VVH
+   Contenedor y estilos para la sección de educación y tarjeta del liceo.
+   ----------------------- */
+.educacion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.vvh {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #212529;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+}
+
+.vvh-img {
+    display: flex;
+    align-items: center;
+    background-color: #343a40;
+    height: 100%;
+    padding: 1rem;
+    margin-block: 0.5rem;
+    border-radius: 50px;
+}
+
+.vvh-img img {
+    width: 60rem;
+}
+
+/* -----------------------
+   14) CURSOS / CREDENCIALES
+   Galería de insignias/credenciales con efecto hover.
+   ----------------------- */
+.cursos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.credencial {
+    margin: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.credencial:hover {
+    transform: scale(1.1);
+}
+
+.credencial img {
+    height: 30vh;
+}
+
+/* -----------------------
+   15) REFERENCIAS
+   Tarjetas de contacto/ referencia con efecto sutil al pasar el cursor.
+   ----------------------- */
+.referencias {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 80vh;
+}
+
+.profesor {
+    background-color: #212529;
+    color: #fff;
+    padding: 2rem 1rem;
+    border-radius: 20px;
+    margin-block: 2rem;
+    transition: transform 0.5s ease;
+}
+
+.profesor:hover {
+    transform: translateY(-20px);
+}
+
+/* -----------------------
+   16) FORMULARIO DE CONTACTO
+   Validaciones visuales (clases is-valid / is-invalid de Bootstrap).
+   ----------------------- */
+#formulario-contacto .form-control.is-invalid {
+    border-color: #dc3545;
+}
+
+#formulario-contacto .form-control.is-valid {
+    border-color: #198754;
+}
+
+/* -----------------------
+   17) UTILIDADES Y AJUSTES FINOS
+   Reglas pequeñas y utilitarias que pueden usarse globalmente.
+   ----------------------- */
+/* (añade aquí reglas utilitarias futuras si las necesitas) */

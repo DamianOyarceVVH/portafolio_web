@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- SECCIÓN: Head
+         Contiene metadatos, título, favicon, enlaces a Bootstrap, iconos, fuentes y estilos personalizados.
+         Aquí se cargan dependencias externas (CSS, Google Fonts) y la hoja de estilos local.
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damián Oyarce - Portafolio Web</title>
+    <link rel="icon" href="resources/images/vvh_icono.png">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Pirata+One&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+    <!-- SECCIÓN: Barra de Navegación Lateral (fixed)
+         Navegación vertical fija con íconos. Cada enlace apunta a una sección del contenido principal.
+         Se espera que haya scripts para resaltar iconos, mostrar secciones y tooltips de Bootstrap.
+    -->
+    <nav id="barra-lateral" class="bg-dark p-3 d-flex flex-column fixed-top">
+
+        <a class="navbar-brand text-white text-center mb-4" href="#">
+            <i class="bi bi-code-slash h2"></i> 
+        </a>
+
+        <!-- SECCIÓN: Lista de navegación principal
+             Contiene los elementos de navegación principales del portafolio (home, sobre mí, servicios, etc.).
+             Los enlaces usan iconos de Bootstrap Icons y manejadores onmouseover/onmouseout/onclick para interacción.
+        -->
+        <ul class="nav nav-pills flex-column flex-grow-1">
+            
+            <li class="nav-item">
+                <a href="#home" 
+                   class="nav-link text-secondary active" title="Inicio" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="right"
+                   onmouseover="resaltarIcono(this, '#0d6efd')" 
+                   onmouseout="restaurarIcono(this)"
+                   onclick="mostrarSeccion(event, this)">
+                    <i class="bi bi-house-fill icono-nav"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#sobreMi" class="nav-link text-secondary" title="Sobre Mí" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="right"
+                   onmouseover="resaltarIcono(this, '#198754')" 
+                   onmouseout="restaurarIcono(this)"
+                   onclick="mostrarSeccion(event, this)">
+                    <i class="bi bi-person-fill icono-nav"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#servicios" 
+                   class="nav-link text-secondary" 
+                   title="Servicios" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="right"
+                   onmouseover="resaltarIcono(this, '#6610f2')" 
+                   onmouseout="restaurarIcono(this)"
+                   onclick="mostrarSeccion(event, this)">
+                    <i class="bi bi-gear-fill icono-nav"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#colaboraciones" 
+                   class="nav-link text-secondary" 
+                   title="Colaboraciones" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="right"
+                   onmouseover="resaltarIcono(this, '#d63384')" 
+                   onmouseout="restaurarIcono(this)"
+                   onclick="mostrarSeccion(event, this)">
+                    <i class="bi bi-people-fill icono-nav"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#proyectos" 
+                   class="nav-link text-secondary" 
+                   title="Proyectos" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="right"
+                   onmouseover="resaltarIcono(this, '#ffc107')" 
+                   onmouseout="restaurarIcono(this)"
+                   onclick="mostrarSeccion(event, this)">
+                    <i class="bi bi-briefcase-fill icono-nav"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#habilidades" class="nav-link text-secondary" 
+                   title="Habilidades" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="right"
+                   onmouseover="resaltarIcono(this, '#0dcaf0')" 
+                   onmouseout="restaurarIcono(this)"
+                   onclick="mostrarSeccion(event, this)">
+                    <i class="bi bi-lightning-charge-fill icono-nav"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#educacion" class="nav-link text-secondary" 
+                   title="Educación" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="right"
+                   onmouseover="resaltarIcono(this, '#fd7e14')" 
+                   onmouseout="restaurarIcono(this)"
+                   onclick="mostrarSeccion(event, this)">
+                    <i class="bi bi-mortarboard-fill icono-nav"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#cursos" 
+                   class="nav-link text-secondary" 
+                   title="Cursos" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="right"
+                   onmouseover="resaltarIcono(this, '#6f42c1')" 
+                   onmouseout="restaurarIcono(this)"
+                   onclick="mostrarSeccion(event, this)">
+                    <i class="bi bi-journal-bookmark-fill icono-nav"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#experiencia" 
+                   class="nav-link text-secondary" 
+                   title="Experiencia" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="right"
+                   onmouseover="resaltarIcono(this, '#20c997')" 
+                   onmouseout="restaurarIcono(this)"
+                   onclick="mostrarSeccion(event, this)">
+                    <i class="bi bi-calendar-check-fill icono-nav"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#referencias" 
+                   class="nav-link text-secondary" 
+                   title="Referencias" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="right"
+                   onmouseover="resaltarIcono(this, '#6c757d')" 
+                   onmouseout="restaurarIcono(this)"
+                   onclick="mostrarSeccion(event, this)">
+                    <i class="bi bi-patch-check-fill icono-nav"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#organizaciones" 
+                   class="nav-link text-secondary" 
+                   title="Participación" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="right"
+                   onmouseover="resaltarIcono(this, '#fd7e14')" 
+                   onmouseout="restaurarIcono(this)"
+                   onclick="mostrarSeccion(event, this)">
+                    <i class="bi bi-diagram-3-fill icono-nav"></i>
+                </a>
+            </li>
+
+        </ul>
+        
+        <!-- SECCIÓN: Enlaces inferiores de la barra lateral
+             Contiene contacto rápido y enlace a GitHub; el contenedor usa mt-auto para pegarse al pie de la barra.
+        -->
+        <div class="mt-auto">
+
+            <a href="#contacto" class="nav-link text-secondary" 
+               title="Contactos" 
+               data-bs-toggle="tooltip" 
+               data-bs-placement="right"
+               onmouseover="resaltarIcono(this, '#dc3545')" 
+               onmouseout="restaurarIcono(this)"
+               onclick="mostrarSeccion(event, this)">
+                <i class="bi bi-envelope-fill icono-nav"></i>
+            </a>
+
+            <a href="https://github.com/DamianOyarceVVH" 
+               target="_blank" 
+               class="nav-link text-secondary" 
+               title="Ver Perfil de GitHub"
+               data-bs-toggle="tooltip" 
+               data-bs-placement="right">
+                <i class="bi bi-github icono-nav"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- SECCIÓN: Contenido Principal
+         Contenedor principal que aloja todas las secciones del portafolio (home, sobre mí, servicios, proyectos, contacto, etc.).
+         Cada sección tiene su propio id para navegación interna desde la barra lateral.
+    -->
+    <main id="contenido-principal">
+
+        <!-- SECCIÓN: Home (Inicio)
+             Introducción breve con nombre, descripción profesional y botones de acceso a proyectos y contacto.
+        -->
+        <section id="home" class="py-5 text-center">
+            <div class="container home">
+                <h1 class="display-4">Damián Oyarce</h1>
+                <p class="lead text-muted">Técnico en Programación con enfoque en Datos y Desarrollo Web.</p>
+                <p>Bienvenido a mi portafolio digital. Explora mis proyectos, habilidades y formación.</p>
+                <div>
+                    <a href="#proyectos" class="btn btn-primary my-2" onclick="clickEnlaceNav('#proyectos')">Ver Proyectos</a>
+                    <a href="#contacto" class="btn btn-secondary my-2" onclick="clickEnlaceNav('#contacto')">Contactarme</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: Sobre Mí
+             Presentación personal: foto, lema y descripción profesional. Ideal para destacar formación y enfoque.
+        -->
+        <section id="sobreMi">
+            <h1 class="mb-4">Sobre mí</h1>
+            <div class="sobre_mi">
+                <div class="izq">
+                    <div class="presentacion">
+                        <img src="resources/images/yo.jpg" alt="Foto de Damián Oyarce" class="img-fluid mb-4 align-self-center" style="max-width: 480px;">
+                        <h2 class="h4 text-center">Para mí, Los datos son la base y esencia de nuestra era</h2>
+                        <h3 class="h6 text-center text-muted">- Damián Oyarce</h3>
+                    </div>
+                </div>
+                <div class="der">
+                    <p>Técnico en Programación formado en el Liceo Comercial Vate Vicente Huidobro.
+                    Me encanta todo lo relacionado con los datos, y la información y herramientas que estos mismos nos brindan. 
+                    Mi competencia principal es la creación e implementación de software y rutinas (baja y mediana complejidad), 
+                    asegurando la correcta integración de estructuras y bases de datos según los estándares y requerimientos del negocio.
+                    Experiencia enriquecida a través de alternancias (como INACAP) y la interacción con el sector empresarial en ferias y charlas especializadas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: Servicios
+             Muestra las habilidades y servicios ofrecidos (Frontend, gestión de BBDD, Backend básico) usando tarjetas Bootstrap.
+        -->
+        <section id="servicios" class="py-5 bg-light">
+            <div class="container">
+                <h1 class="text-center mb-4">Servicios</h1>
+                <p class="text-center text-muted mb-4">Como desarrollador en formación, ofrezco los siguientes servicios y competencias:</p>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 text-center shadow-sm">
+                            <div class="card-body">
+                                <i class="bi bi-code-square h1 text-primary"></i>
+                                <h3 class="card-title mt-3">Desarrollo Web Frontend</h3>
+                                <p class="card-text">Creación de interfaces de usuario interactivas y responsivas usando HTML, CSS y JavaScript.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 text-center shadow-sm">
+                            <div class="card-body">
+                                <i class="bi bi-database-fill-gear h1 text-success"></i>
+                                <h3 class="card-title mt-3">Gestión de BBDD</h3>
+                                <p class="card-text">Diseño, implementación y consultas en bases de datos relacionales (MySQL).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 text-center shadow-sm">
+                            <div class="card-body">
+                                <i class="bi bi-file-earmark-code-fill h1 text-info"></i>
+                                <h3 class="card-title mt-3">Desarrollo Backend (Básico)</h3>
+                                <p class="card-text">Creación de lógica de servidor y APIs simples (Ej: usando Python/Flask o Node.js).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: Colaboraciones y Experiencias
+             Lista resumida de proyectos y colaboraciones relevantes (simulaciones, alternancias, desafíos).
+        -->
+        <section id="colaboraciones" class="py-5">
+            <div class="container">
+                <h1 class="text-center mb-4">Colaboraciones y Experiencias</h1>
+                <p class="text-center text-muted mb-4">He participado en proyectos educativos y simulaciones que replican entornos de trabajo real:</p>
+                <div class="row text-center align-items-center">
+                    <div class="col-md-3 col-6 mb-4">
+                        <i class="bi bi-trash-fill h2 text-success"></i>
+                        <h5 class="text-muted mt-2">Proyecto EcoTrash</h5>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4">
+                        <i class="bi bi-bicycle h2 text-info"></i>
+                        <h5 class="text-muted mt-2">Proyecto BikeSafe</h5>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4">
+                        <i class="bi bi-building-fill-check h2 text-primary"></i>
+                        <h5 class="text-muted mt-2">Alternancia INACAP</h5>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4">
+                        <i class="bi bi-bar-chart-line-fill h2 text-warning"></i>
+                        <h5 class="text-muted mt-2">Desafíos IBM SkillsBuild</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: Proyectos
+             Presenta proyectos destacados con imagen, descripción y enlace al repositorio.
+             Cada proyecto se muestra en una "carta" que puede estilizarse con CSS adicional.
+        -->
+        <section id="proyectos" class="">
+            <div class="container">
+                <h1>Principales Proyectos</h1>
+                <div class="proyectos">
+                    <div class="carta-proyecto">
+                        <img src="resources/images/ecotrash.png" class="card-img-top" alt="Proyecto EcoTrash">
+                        <div class="card-body">
+                            <h3 class="card-title">EcoTrash (Simulación IA)</h3>
+                            <p class="card-text">Sets de basureros junto a una cámara con IA integrada que clasifica, separa y recompensa por cada diferente objeto reciclado.</p>
+                            <a href="https://github.com/DamianOyarceVVH/EcoTrash" target="_blank" class="btn btn-outline-success">Ver Repositorio</a>
+                        </div>
+                    </div>
+                    <div class="carta-proyecto bike">
+                        <img src="resources/images/prototipo1.png" alt="Proyecto BikeSafe">
+                        <div class="card-body">
+                            <h3 class="card-title">BikeSafe (App Web)</h3>
+                            <p class="card-text">Aplicación web para ciclistas con información de zonas peligrosas, consejos, leyes y mapa dinámico de ciclovías en Santiago.</p>
+                            <a href="https://x.thunkable.com/projectPage/68b9a962ab29674ea1b23111" target="_blank" class="btn btn-outline-info">Ver Repositorio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: Habilidades
+             Visualización de habilidades técnicas (niveles) mediante barras. Ideal para detalle rápido de competencias.
+        -->
+        <section id="habilidades">
+            <h1>Habilidades</h1>
+            <div class="habilidades">
+                <div class="carta-web">
+                    <h2>Desarrollo Web</h2>
+                    <h3>HTML (90%)</h3>
+                    <div class="bar"><div id="html-fill"></div></div>
+                    <h3>CSS (75%)</h3>
+                    <div class="bar"><div id="css-fill"></div></div>
+                    <h3>JS (45%)</h3>
+                    <div class="bar"><div id="js-fill"></div></div>
+                </div>
+                <div class="carta-bd">
+                    <h2>Bases de Datos</h2>
+                    <h3>MySQL (50%)</h3>
+                    <div class="bar"><div id="sql-fill"></div></div>
+                </div>
+                <div class="carta-obj">
+                    <h2>Programación Orientada a Objetos</h2>
+                    <h3>Python (45%)</h3>
+                    <div class="bar"><div id="python-fill"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: Educación
+             Información académica destacada: institución, especialidad, período y breve descripción de la formación.
+        -->
+        <section id="educacion">
+            <h1>Educación</h1>
+            <div class="educacion">
+                <div class="vvh">
+                    <div class="vvh-img">
+                        <img src="resources/images/vvh.svg" alt="Logo Liceo Vate Vicente Huidobro" class="img-fluid rounded mb-3">
+                    </div>
+                    <div class="vvh-info">
+                        <a href="https://liceovvh.cl"><h2>Liceo Comercial Vate Vicente Huidobro</h2></a>
+                        <h3>Especialidad Técnica en Programación</h3>
+                        <p class="lead">San Ramón, Santiago de Chile | 2024 - 2025</p>
+                        <p>Formación enfocada en el desarrollo de software, bases de datos (MySQL) y programación orientada a objetos (Python), complementada con alternancias en instituciones como INACAP y participación en desafíos de IBM SkillsBuild.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: Cursos y Certificaciones
+             Galería de credenciales (IBM SkillsBuild) con enlaces a cada credencial.
+        -->
+        <section id="cursos">
+            <h1>Cursos y certificaciones (IBM SkillsBuild)</h1>
+            <div class="cursos">
+                <div class="credencial"><a href="https://students.yourlearning.ibm.com/credential/CREDLY-ae2e453d-5311-41a0-be95-b217e0c4670f"><img src="resources/images/credencial1.png" alt=""></a></div>
+                <div class="credencial"><a href="https://students.yourlearning.ibm.com/credential/CREDLY-5ce6af3f-f3a2-4eb9-9d44-690812d45210"><img src="resources/images/credencial2.png" alt=""></a></div>
+                <div class="credencial"><a href="https://students.yourlearning.ibm.com/credential/CREDLY-b8810a57-2c5a-4bbc-81f1-9bfc649ad13d"><img src="resources/images/credencial3.png" alt=""></a></div>
+                <div class="credencial"><a href="https://students.yourlearning.ibm.com/credential/CREDLY-efb02d73-5e8b-4f07-a27d-2425a98c71c5"><img src="resources/images/credencial4.png" alt=""></a></div>
+                <div class="credencial"><a href="https://students.yourlearning.ibm.com/credential/CREDLY-71db9bd9-b01f-43c3-8b8e-ab438e2706c1"><img src="resources/images/credencial5.png" alt=""></a></div>
+                <div class="credencial"><a href="https://students.yourlearning.ibm.com/credential/CREDLY-29bdaec3-af04-458e-a70e-2e6fa78c5dd5"><img src="resources/images/credencial6.png" alt=""></a></div>
+                <div class="credencial"><a href="https://students.yourlearning.ibm.com/credential/CREDLY-dafd91d2-b4fa-46e2-a1fe-c9b0428d6ea7"><img src="resources/images/credencial7.png" alt=""></a></div>
+                <div class="credencial"><a href="https://students.yourlearning.ibm.com/credential/CREDLY-dc3b5213-b2dd-4760-b45e-c9a95032bda7"><img src="resources/images/credencial8.png" alt=""></a></div>
+                <div class="credencial"><a href="https://students.yourlearning.ibm.com/credential/CREDLY-ce744ad1-ca21-498e-a9ea-8c01f792977d"><img src="resources/images/credencial9.png" alt=""></a></div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: Experiencia
+             Bloques para experiencia profesional, prácticas y participación en proyectos con responsabilidades descritas.
+        -->
+        <section id="experiencia" class="py-5 bg-light">
+            <div class="container">
+                <h1 class="text-center mb-4">Experiencia</h1>
+                <div class="row">
+                    <div class="col-md-10 mx-auto">
+                        <div class="mb-4 p-3 bg-white rounded shadow-sm">
+                            <h4>Práctica Profesional (Pendiente)</h4>
+                            <h5 class="text-muted">Empresa (Por definir) | Fecha (Ej: Ene 2025 - Mar 2025)</h5>
+                            <p>Buscando activamente una oportunidad de práctica para aplicar mis conocimientos en desarrollo de software, gestión de bases de datos y análisis de datos en un entorno profesional.</p>
+                        </div>
+                        <div class="mb-4 p-3 bg-white rounded shadow-sm">
+                            <h4>Lider y Desarrollador en Proyecto EcoTrash</h4>
+                            <h5 class="text-muted">Proyecto Académico | 2025</h5>
+                            <p>Participé en el desarrollo de una simulación IA para la clasificacion de residuos. Mis responsabilidades incluyeron:</p>
+                            <ul>
+                                <li>Diseño y funcionalidades de la interfaz.</li>
+                                <li>Desarrollo y entrenamiento para la clasificación de residuos de la IA.</li>
+                                <li>Integración de la aplicación con los componentes físicos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: Referencias
+             Información de contacto de referencias académicas o profesionales.
+        -->
+        <section id="referencias">
+            <h1 class="mb-4">Referencias</h1>
+            <div class="referencias">
+                <div class="profesor">
+                    <h2>Dany Hernández</h2>
+                    <h3>Profesor de la Especialidad de Programación en el Liceo Comercial Vate Vicente Huidobro (Desarrollo Web y Bases de Datos)</h3>
+                    <h4>+56 9 2708 0394</h4>
+                </div>
+                <div class="profesor">
+                    <h2>Mauricio Medel</h2>
+                    <h3>Profesor de la Especialidad de Programación en el Liceo Comercial Vate Vicente Huidobro (Python y Emprendimiento)</h3>
+                    <h4>+56 9 9583 0717</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: Organizaciones y Voluntariado
+             Lista de participación en actividades extracurriculares y voluntariados con etiquetas (badges).
+        -->
+        <section id="organizaciones" class="py-5 bg-light">
+            <div class="container">
+                <h1 class="text-center mb-4">Participación y Voluntariado</h1>
+                <div class="row">
+                    <div class="col-md-8 mx-auto">
+                        <ul class="list-group shadow-sm">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h2 class="mb-1">Taller de Voleyball</h2>
+                                    <small class="text-muted">Miembro Activo | 2024</small>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">Deportivo</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h2 class="mb-1">Directvia de Curso</h2>
+                                    <small class="text-muted">Asistente | 2025</small>
+                                </div>
+                                <span class="badge bg-success rounded-pill">Comunidad</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: Contacto
+             Formulario de contacto con validación por JS y enlaces a redes sociales. 
+             El contenedor #contenedor-alerta sirve para inyectar mensajes de éxito/advertencia vía JS.
+        -->
+        <section id="contacto" class="py-5">
+            <div class="container">
+                <h1 class="text-center mb-4">Contacto</h1>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div id="contenedor-alerta">
+                        </div>
+                        
+                        <form id="formulario-contacto" class="shadow p-4 rounded" onsubmit="enviarFormulario(event)">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" required 
+                                       onchange="validarCampo(this)">
+                                <div class="invalid-feedback">Por favor, ingresa tu nombre.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required 
+                                       onchange="validarCampo(this)">
+                                <div class="invalid-feedback">Por favor, ingresa un email válido.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mensaje" class="form-label">Mensaje</label>
+                                <textarea class="form-control" id="mensaje" rows="5" required 
+                                          onchange="validarCampo(this)"></textarea>
+                                <div class="invalid-feedback">Por favor, escribe tu mensaje.</div>
+                            </div>
+                            <button type="submit" class="btn btn-danger w-100">
+                                <i class="bi bi-envelope-fill"></i> Enviar Mensaje
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-5">
+                    <h2 class="h4 mb-3">O encuéntrame en:</h2>
+                    <a href="https://github.com/DamianOyarceVVH" target="_blank" class="btn btn-outline-dark btn-lg mx-2" title="GitHub">
+                        <i class="bi bi-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/damian-oyarce-vvh" target="_blank" class="btn btn-outline-primary btn-lg mx-2" title="LinkedIn (Placeholder)">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a href="mailto:damianoyarce@liceovvh.cl" class="btn btn-outline-secondary btn-lg mx-2" title="Correo Electrónico">
+                        <i class="bi bi-envelope-at-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SECCIÓN: Scripts finales
+         Primero se carga el bundle de Bootstrap (incluye Popper), luego los scripts personalizados (interactividad, validaciones, manejo de navegación).
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="static/js/script.js"></script> 
+</body>
+</html>
