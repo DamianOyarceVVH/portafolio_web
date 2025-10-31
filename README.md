@@ -3,7 +3,7 @@ Portafolio Profesional - Damián Oyarce
 Este proyecto es mi portafolio web profesional, diseñado para mostrar mis habilidades, formación y proyectos como Técnico en Programación.
 
 Autor: Damián Oyarce
-Link al Despliegue (GitHub Pages): https://DamianOyarceVVH.github.io/portafolio/ (Ejemplo de enlace)
+Link al Despliegue (GitHub Pages): https://DamianOyarceVVH.github.io/portafolio_web
 
 1. Propósito del Proyecto
 
@@ -39,7 +39,7 @@ Para ver el proyecto localmente:
 
 Clona este repositorio:
 
-git clone [https://github.com/DamianOyarceVVH/portafolio.git](https://github.com/DamianOyarceVVH/portafolio.git)
+git clone [https://github.com/DamianOyarceVVH/portafolio.git](https://github.com/DamianOyarceVVH/portafolio_web.git)
 
 
 Navega a la carpeta del proyecto:
